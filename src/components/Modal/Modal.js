@@ -38,11 +38,10 @@ export default function Modal() {
       className={style.Overlay}
       onClick={handleBackdropClick}
       onKeyDown={handleEscapeClick}
-      ref={modalRef}
-      tabIndex="0" // юзай для постановки таргета и закрітия по Ескейпу
+      tabIndex="0" // юзай для постановки таргета и закрытия по Ескейпу
     >
       <div className={style.Modal}>
-        <img src={largeImageURL} alt="largeImage" />
+        <img src={largeImageURL} alt="largeImage" ref={modalRef} tabIndex="0" />
       </div>
     </div>,
     modalRoot,

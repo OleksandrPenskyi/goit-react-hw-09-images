@@ -1,0 +1,13 @@
+.Wrapper {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Text {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: red;
+}

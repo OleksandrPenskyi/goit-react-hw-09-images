@@ -4,6 +4,10 @@ export const changeLargeImgURL = createAction('pictures/changeLargeImgURL');
 export const changeSearchQuery = createAction('pictures/changeSearchQuery');
 export const closeModal = createAction('pictures/closeModal');
 
+export const incrementCurrentpage = createAction(
+  'pictures/incrementCurrentpage',
+);
+
 export const fetchPicturesRequest = createAction(
   'pictures/fetchPicturesRequest',
 );

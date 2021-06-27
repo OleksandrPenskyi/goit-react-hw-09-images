@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeSearchQuery } from '../../redux/pics/pictures-actions';
-import { getPicsOperation } from '../../redux/pics/pictures-operations';
-import { useDispatch } from 'react-redux';
+import { getSearchQuery } from '../../redux/pics/pictures-selectors';
 
 import style from './Searchbar.module.css';
 
 export default function Searchbar() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
+  const searchQuery = useSelector(getSearchQuery);
 
   const handleSearchQuery = ({ target: { value } }) => {
     setSearch(value);
@@ -15,12 +16,17 @@ export default function Searchbar() {
 
   const handleSubmitForm = event => {
     event.preventDefault();
+    if (!search) {
+      alert('Введите ввалидное значение!');
+      return;
+    }
 
-    // fetch запрос
-    dispatch(getPicsOperation(search, 1));
-    // Вносим значение поиска в стейт
-    dispatch(changeSearchQuery(search));
+    if (search.toLowerCase() === searchQuery.toLowerCase()) {
+      alert('Данный поиск уже осуществлен! Введите другое значение!');
+      return;
+    }
 
+    dispatch(changeSearchQuery(search)); // Вносим значение поиска в стейт
     clearSearchForm();
   };
 

@@ -1,16 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { incrementCurrentpage } from '../../redux/pics/pictures-actions';
 
 import style from './Button.module.css';
 
-const Button = ({ onBtnClick }) => (
-  <button onClick={onBtnClick} type="button" className={style.Button}>
-    Load more
-  </button>
-);
+export default function Button() {
+  const dispatch = useDispatch();
 
-export default Button;
+  const onBtnClick = () => {
+    dispatch(incrementCurrentpage());
+  };
 
-Button.propTypes = {
-  onBtnClick: PropTypes.func.isRequired,
-};
+  return (
+    <button onClick={onBtnClick} type="button" className={style.Button}>
+      Load more
+    </button>
+  );
+}

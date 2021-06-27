@@ -21,7 +21,13 @@ export const getPicsOperation = (
     } = await axios.get(
       `/?q=${searchValue}&page=${currentPage}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`,
     );
+
     dispatch(fetchPicturesSuccess(hits));
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
   } catch (error) {
     dispatch(fetchPicturesError(error.message));
   }
