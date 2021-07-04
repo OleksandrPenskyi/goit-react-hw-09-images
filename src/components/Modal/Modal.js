@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLargeImageURL } from '../../redux/pics/pictures-selectors';
@@ -29,9 +29,9 @@ export default function Modal() {
     }
   };
 
-  function onCloseModal() {
+  const onCloseModal = useCallback(() => {
     dispatch(closeModal());
-  }
+  }, [dispatch]);
 
   return createPortal(
     <div
